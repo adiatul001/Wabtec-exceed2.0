@@ -1,0 +1,19 @@
+Q1. Why we chose the sleeper density model for speed calculation?
+
+Q2. How to determine the sleeper density?
+
+Presentation sequence(15 minutes):
+
+1-> What is the need of image analysis for speed detection? (1 minute)
+
+2-> Mention about the two solutions for speed calculation (30 seconds-1 minute)
+
+3- (Atul)> Mention why we chose PSC (Pre Stressed Concrete) sleeper detection 
+
+4-> Brief idea on PSC sleepers (sleeper density) (3-5 minutes) (including point 3 and 4)
+
+5-> Logic/calculation (Detailed flow chart) (2 minute)
+
+6-> Practicality of the prototype
+
+7-> Business Model (2 minute) (including point 7 and 8)
