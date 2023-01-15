@@ -14,7 +14,7 @@ speed =str(0)
 
 def speed_cal(count):
     # threading.Timer(1.0, speed_cal).start()
-    spd = count*0.752*3.6
+    spd = count*0.602*3.6
     return spd
 #     print(spd)
 

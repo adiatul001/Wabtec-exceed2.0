@@ -19,7 +19,7 @@ count = 0
 speed = str(0)
 
 def speed_cal(count):
-    spd = count*0.752*3.6
+    spd = count*0.602*3.6
     return spd
 
 cap = cv2.VideoCapture('video8.mp4')
