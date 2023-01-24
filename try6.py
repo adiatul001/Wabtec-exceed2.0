@@ -47,7 +47,6 @@ while cap.isOpened():
         (x, y, w, h) = cv2.boundingRect(c)
         if cv2.contourArea(c) < 1000:
             continue
-        # cv2.rectangle(frame, (x,y), (x+w, y+h), (0,255,0), 2)
         cent = cen(x, y, w, h)
         detected.append(cent)
         cv2.circle(frame, cent, 4, (0, 0,255), -1)
@@ -57,7 +56,6 @@ while cap.isOpened():
         if y in range(line_pos-offset, line_pos+offset, 1) and  x in range(10,200):
             count += 1
             detected.remove((x, y))
-            # cv2.line(frame, (10, line_pos),(2000, line_pos), (255, 255, 255), 3)
             print("sleeper detected : "+str(count))
     
     if (abs(tm2-tm1) ==2):
@@ -71,12 +69,7 @@ while cap.isOpened():
     cv2.putText(frame, speed, (125,30), cv2.FONT_HERSHEY_SIMPLEX,.5, (0,255,0), 1, cv2.LINE_AA)
 
     cv2.imshow('frame', frame)
-    # cv2.imshow('difference', diff)
-    # cv2.imshow('dilated', dilation)
-    # cv2.imshow('erosion', erosion)
-
-    # cv2.imshow('gblur', gblur)
-    cv2.imshow('median', median)
+    cv2.imshow('mask', median)
 
     if cv2.waitKey(40) == 27:
         break

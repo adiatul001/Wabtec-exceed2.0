@@ -1,9 +1,7 @@
 # version 2 Jan 3:48 pm, done with the speed part, till now the best version for that downloaded video
 
-
 import numpy as np
 import cv2
-# import threading
 import time
 
 detected = []
@@ -13,12 +11,9 @@ count = 0
 speed =str(0)
 
 def speed_cal(count):
-    # threading.Timer(1.0, speed_cal).start()
     spd = count*0.602*3.6
     return spd
-#     print(spd)
 
-# speed_cal(count)
 
 def cen(x, y, w, h):
     x1 = int(w / 2)
@@ -52,13 +47,10 @@ while(True):
     contours, _ = cv2.findContours(dilation, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
     cv2.line(frame, (80, line_pos), (440, line_pos), (255,127,0), 3)
     
-    # for contour in contours:
     for(i,c) in enumerate(contours):
         (x, y, w, h) = cv2.boundingRect(c)
         if cv2.contourArea(c) < 1000:
             continue
-        # cv2.rectangle(frame, (x,y), (x+w, y+h), (0,255,0), 2)
-        # cv2.line(frame, (x,y), (x+w,y+h), (0,255,255), 5)
         cent = cen(x, y, w, h)
         detected.append(cent)
         cv2.circle(frame, cent, 4, (0, 0,255), -1)
@@ -69,19 +61,6 @@ while(True):
                 detected.remove((x,y))
                 cv2.line(frame, (80, line_pos), (440, line_pos), (255,255,255), 3)
                 print("sleeper detected : "+str(count))
-                
-            # if y<(line_pos+offset) and y>(line_pos-offset):
-            #     if x<(400) and x>(100):
-            #         count+=1
-            #         detected.remove((x,y))
-            #         print("car is detected : "+str(count)) 
-
-    # if(count is True):
-    #     speed1, count  = speed_cal(count)
-    #     print(speed1)
-
-    # except:
-    #     print("An exception occurred")
     
     if (abs(tm2-tm1) ==1):
         spd = speed_cal(count)
@@ -89,18 +68,9 @@ while(True):
         print(spd," Km/h")
         tm1 = int(time.time_ns() / (10 ** 9))
         speed = str('%.2f' % spd) + ' Km/hr'
-    
-    cv2.rectangle(frame, (120, 5), (240, 40), (0, 255, 255), -1)
-    cv2.putText(frame, speed, (125,30), cv2.FONT_HERSHEY_SIMPLEX,.5, (0,255,0), 1, cv2.LINE_AA)
-
-
+ 
     cv2.imshow('frame', frame)
-    # cv2.imshow('res', res)
-    # cv2.imshow('erosion', erosion)
-    # cv2.imshow('dilation', dilation)
-    # cv2.imshow('eroded', res2)
-    # cv2.imshow('dilated', res3)
-    
+    cv2.imshow('mask', dilation)
     if cv2.waitKey(40) == 27:
         break
 
